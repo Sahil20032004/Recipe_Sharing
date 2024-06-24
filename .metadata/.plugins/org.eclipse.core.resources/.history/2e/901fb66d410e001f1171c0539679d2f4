@@ -1,0 +1,23 @@
+package com.recipeSharing.config;
+
+import java.util.Date;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Service;
+
+import io.jsonwebtoken.Jwts;
+
+@Service
+public class JWProvider {
+
+	//This token will be generated during the time of account creation/login.
+	public String generateToken(Authentication auth) {
+		String JWT = Jwts.builder()
+				.setIssuedAt(new Date())
+				.setExpiration(new Date(new Date().getTime()+86400000))
+				.claim("email", auth.getName()) //using email so that we can retrive email using jwt token
+				.signWith(null).compact();
+		
+		return JWT;
+	}
+}

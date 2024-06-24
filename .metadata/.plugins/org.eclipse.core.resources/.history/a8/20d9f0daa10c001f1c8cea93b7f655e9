@@ -1,0 +1,56 @@
+package com.recipeSharing.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.recipeSharing.module.Recipe;
+import com.recipeSharing.module.User;
+import com.recipeSharing.repository.RecipeRepository;
+
+public class recipeServiceImplementation implements recipeService {
+
+	@Autowired
+	RecipeRepository recipeRepo;
+	
+	@Override
+	public Recipe createRecipe(Recipe recipe, User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Recipe FindById(Long id) throws Exception {
+		Optional<Recipe> opt = recipeRepo.findById(id);
+		if(opt.isPresent()) {
+			return opt.get();
+		}
+		throw new Exception("Not Found");
+	}
+
+	@Override
+	public void deleteRecipe(Long id) throws Exception {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Recipe updateRecipe(Recipe recipe, Long id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Recipe> findAllRecipe() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Recipe likesDone(long recipeId, User user) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

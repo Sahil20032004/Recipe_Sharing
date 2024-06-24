@@ -1,0 +1,5 @@
+package com.recipeSharing.module;
+
+public class User {
+
+}

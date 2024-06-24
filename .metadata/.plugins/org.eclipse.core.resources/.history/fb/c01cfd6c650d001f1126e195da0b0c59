@@ -1,0 +1,24 @@
+package com.recipeSharing.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+public class AppConfig {
+
+	@Bean
+	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+		http.sessionManagement(management -> management.sessionCreationPolicy(
+				 SessionCreationPolicy.STATELESS)) //this is for session management where we will manage the session
+		.authorizeHttpRequests( //for the end points to be protected
+				Authorize -> Authorize.requestMatchers("/api/**").authenticated() //authenticate all the end points starting with /api/**
+		        .anyRequest().permitAll())
+		.csrf(csrf->scrf.disable())
+		.cors(cors->cors.configurationSource(corsConfigurationSource()))
+		
+		
+	}
+}

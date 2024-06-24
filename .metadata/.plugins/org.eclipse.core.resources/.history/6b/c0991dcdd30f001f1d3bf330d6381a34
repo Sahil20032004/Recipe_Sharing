@@ -1,0 +1,5 @@
+package com.recipeSharing.service;
+
+public class CustomUserService {
+
+}

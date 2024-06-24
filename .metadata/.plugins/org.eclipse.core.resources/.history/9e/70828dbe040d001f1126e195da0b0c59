@@ -1,0 +1,55 @@
+package com.recipeSharing.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.recipeSharing.module.Recipe;
+import com.recipeSharing.module.User;
+import com.recipeSharing.service.UserService;
+import com.recipeSharing.service.recipeService;
+
+@RestController
+public class RecipeController {
+ 
+	@Autowired
+	recipeService recipeserve;
+	UserService userservice;
+	
+	@PostMapping("/api/recipe/{id}")
+	public Recipe createRecipe(@RequestBody Recipe recipe , @PathVariable Long id) throws Exception {
+		User user = userservice.findByUserId(id);
+		Recipe createdrecipe = recipeserve.createRecipe(recipe, user);
+		return createdrecipe; 
+	}
+	@GetMapping("/api/recipe")
+	public List<Recipe> getAllRecipe() {
+		List<Recipe> recipe = recipeserve.findAllRecipe();
+		return recipe;
+	}
+	@DeleteMapping("/api/recipe/{id}")
+	public String deleteRecipe(@PathVariable Long id) throws Exception {
+		recipeserve.deleteRecipe(id);
+		return "Recipe Deleted succesfuly";
+	}
+	@PutMapping
+	public Recipe updateRecipe(@RequestBody Recipe recipe , @PathVariable Long id) throws Exception {
+		Recipe toupdate = recipeserve.updateRecipe(recipe, id);
+		return toupdate;
+	}
+	@PutMapping("/api/recipe/{id}/user/{userid}")
+	public Recipe likescount(@PathVariable Long id , @PathVariable Long userid) throws Exception {
+		User user = userservice.findByUserId(userid);
+		Recipe countlike = recipeserve.likesDone(id, user);
+		return countlike;
+	}
+	
+	
+}

@@ -1,0 +1,13 @@
+package com.recipeSharing.service;
+
+import com.recipeSharing.module.User;
+
+public class UserServiceImplementatoin implements UserService {
+
+	@Override
+	public User findByUserId(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,46 @@
+package com.recipeSharing.service;
+
+import java.util.List;
+
+import com.recipeSharing.module.Recipe;
+import com.recipeSharing.module.User;
+
+public class recipeServiceImplementation implements recipeService {
+
+	@Override
+	public Recipe createRecipe(Recipe recipe, User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Recipe FindById(Long id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteRecipe(Long id) throws Exception {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Recipe updateRecipe(Recipe recipe, Long id) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Recipe> findAllRecipe() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Recipe likesDone(long recipeId, User user) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

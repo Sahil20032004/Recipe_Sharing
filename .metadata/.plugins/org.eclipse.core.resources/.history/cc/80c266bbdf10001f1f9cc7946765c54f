@@ -1,0 +1,5 @@
+package com.recipeSharing.request;
+
+public class LoginRequest {
+
+}

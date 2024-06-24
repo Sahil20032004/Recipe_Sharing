@@ -1,0 +1,26 @@
+package com.recipeSharing.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.recipeSharing.module.User;
+import com.recipeSharing.repository.UserRepository;
+
+@Service
+public class UserServiceImplementatoin implements UserService {
+
+	@Autowired
+	UserRepository userRepo;
+	
+	@Override
+	public User findByUserId(Long id) throws Exception {
+		Optional<User> opt = userRepo.findById(id);
+		if(opt.isPresent()) {
+			return opt.get();
+		}
+		throw new Exception("User not Found " + id);
+	}
+
+}

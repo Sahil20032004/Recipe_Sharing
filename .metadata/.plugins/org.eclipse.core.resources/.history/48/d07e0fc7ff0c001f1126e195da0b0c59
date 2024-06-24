@@ -1,0 +1,29 @@
+package com.recipeSharing.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.recipeSharing.module.Recipe;
+import com.recipeSharing.module.User;
+import com.recipeSharing.service.UserService;
+import com.recipeSharing.service.recipeService;
+
+@RestController
+public class RecipeController {
+ 
+	@Autowired
+	recipeService recipeserve;
+	UserService userservice;
+	
+	@PostMapping
+	public Recipe createRecipe(@RequestBody Recipe recipe , @PathVariable Long id) throws Exception {
+		User user = userservice.findByUserId(id);
+		Recipe createdrecipe = recipeserve.createRecipe(recipe, user);
+		return createdrecipe;
+	}
+	
+	
+}
